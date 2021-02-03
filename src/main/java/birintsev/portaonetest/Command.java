@@ -38,19 +38,6 @@ public class Command implements Runnable {
 
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        /*ExecutorService maxExecutorService =
-            Executors.newSingleThreadExecutor();
-        ExecutorService minExecutorService =
-            Executors.newSingleThreadExecutor();
-        ExecutorService arithmeticalMeanExecutorService =
-            Executors.newSingleThreadExecutor();
-        ExecutorService medianExecutorService =
-            Executors.newSingleThreadExecutor();
-        ExecutorService longestIncreasingSubsequenceExecutorService =
-            Executors.newSingleThreadExecutor();
-        ExecutorService longestDecreasingSubsequenceExecutorService =
-            Executors.newSingleThreadExecutor();*/
-
         Future<Integer> max =
             executorService
                 .submit(
@@ -66,7 +53,7 @@ public class Command implements Runnable {
                 .submit(
                     () -> integersService.findArithmeticalMean(ints)
                 );
-        Future<Integer> median =
+        Future<Double> median =
             executorService.submit(
                 () -> integersService.findMedian(ints)
             );
@@ -98,13 +85,6 @@ public class Command implements Runnable {
             LOGGER.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
-
-        /*maxExecutorService.shutdown();
-        minExecutorService.shutdown();
-        arithmeticalMeanExecutorService.shutdown();
-        medianExecutorService.shutdown();
-        longestIncreasingSubsequenceExecutorService.shutdown();
-        longestDecreasingSubsequenceExecutorService.shutdown();*/
 
         executorService.shutdown();
     }

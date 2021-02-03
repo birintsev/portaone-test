@@ -13,7 +13,7 @@ public class IntegerServiceImpl implements IntegersService {
     private static final Random RANDOM = new Random(System.currentTimeMillis());
 
     @Override
-    public Integer findMedian(List<Integer> integers) {
+    public Double findMedian(List<Integer> integers) {
         if (integers.isEmpty()) {
             return null;
         }
@@ -118,11 +118,11 @@ public class IntegerServiceImpl implements IntegersService {
         return sum / integers.size();
     }
 
-    private Integer findMedianOdd(List<Integer> integers) {
-        return findKthGreatest(integers, (integers.size() / 2) + 1);
+    private Double findMedianOdd(List<Integer> integers) {
+        return (double) findKthGreatest(integers, (integers.size() / 2) + 1);
     }
 
-    private Integer findMedianEven(List<Integer> integers) {
+    private Double findMedianEven(List<Integer> integers) {
         int leftMedian = findKthGreatest(
             integers,
             integers.size() / 2
@@ -131,7 +131,7 @@ public class IntegerServiceImpl implements IntegersService {
             integers,
             (integers.size() / 2) + 1
         );
-        return (leftMedian + rightMedian) / 2;
+        return (leftMedian + rightMedian) / (double) 2;
     }
 
     private boolean isEven(int i) {

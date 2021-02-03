@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IntegersService {
 
-    Integer findMedian(List<Integer> integers);
+    Double findMedian(List<Integer> integers);
 
     List<Integer> findLongestIncreasingSequence(List<Integer> integers);
 
